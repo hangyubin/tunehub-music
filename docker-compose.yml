@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  tunehub-music:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tunehub-music
+    ports:
+      - "8600:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - tunehub-network
+
+networks:
+  tunehub-network:
+    driver: bridge
